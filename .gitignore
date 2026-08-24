@@ -1,0 +1,13 @@
+# Python-generated files
+__pycache__/
+*.pyc
+.venv/
+
+# Secrets and API keys
+.env
+
+# Private candidate material
+data/private/
+
+# Generated CVs and applications
+output/
