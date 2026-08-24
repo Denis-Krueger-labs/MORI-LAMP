@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mori-lamp"
+version = "0.1.0"
+description = "Evidence-grounded cybersecurity internship analysis pipeline."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = []
+
+[project.scripts]
+mori-lamp = "mori_lamp.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

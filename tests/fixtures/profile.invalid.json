@@ -1,0 +1,26 @@
+{
+  "skills": [
+    {
+      "name": "python",
+      "status": "verified",
+      "evidence": []
+    },
+    {
+      "name": "linux",
+      "status": "verified",
+      "evidence": [
+        "example-linux-lab"
+      ]
+    },
+    {
+      "name": "burp suite",
+      "status": "self_reported",
+      "evidence": []
+    },
+    {
+      "name": "nmap",
+      "status": "self_reported",
+      "evidence": []
+    }
+  ]
+}

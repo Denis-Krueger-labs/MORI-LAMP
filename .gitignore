@@ -11,3 +11,8 @@ data/private/
 
 # Generated CVs and applications
 output/
+
+# Python packaging
+*.egg-info/
+build/
+dist/

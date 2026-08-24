@@ -1,0 +1,23 @@
+{
+  "source": "manual",
+  "title": "Cybersecurity Intern",
+  "company": "Example Security GmbH",
+  "requirements": [
+    {
+      "name": "python",
+      "priority": "required"
+    },
+    {
+      "name": "linux",
+      "priority": "required"
+    },
+    {
+      "name": "burp suite",
+      "priority": "preferred"
+    },
+    {
+      "name": "active directory",
+      "priority": "preferred"
+    }
+  ]
+}
