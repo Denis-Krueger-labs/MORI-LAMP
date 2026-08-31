@@ -1,6 +1,7 @@
 from typing import Annotated, Literal, Self
 
 from pydantic import (
+    AliasChoices,
     BaseModel,
     ConfigDict,
     Field,
@@ -28,6 +29,11 @@ RequirementPriority = Literal[
     "required",
     "preferred",
     "conditional",
+]
+
+ClaimStatus = Literal[
+    "verified",
+    "self_reported",
 ]
 
 
@@ -97,25 +103,62 @@ class Job(StrictModel):
         return self
 
 
-class Skill(StrictModel):
+class Claim(StrictModel):
     name: NonEmptyText
-    status: Literal["verified", "self_reported"]
+    category: RequirementCategory = "technical_skill"
+    status: ClaimStatus
     evidence: list[NonEmptyText] = Field(
         default_factory=list
     )
+    level: NonEmptyText | None = None
 
     @model_validator(mode="after")
-    def verified_skill_requires_evidence(
-        self,
-    ) -> Self:
+    def validate_claim(self) -> Self:
         if self.status == "verified" and not self.evidence:
             raise ValueError(
-                f"verified skill '{self.name}' "
+                f"verified claim '{self.name}' "
                 "requires evidence"
+            )
+
+        if self.category == "language" and self.level is None:
+            raise ValueError(
+                f"language claim '{self.name}' "
+                "requires a level"
             )
 
         return self
 
 
 class Profile(StrictModel):
-    skills: list[Skill]
+    claims: list[Claim] = Field(
+        validation_alias=AliasChoices(
+            "claims",
+            "skills",
+        )
+    )
+
+    @model_validator(mode="after")
+    def claim_keys_must_be_unique(self) -> Self:
+        seen: set[tuple[str, str]] = set()
+
+        for claim in self.claims:
+            key = (
+                claim.category,
+                claim.name,
+            )
+
+            if key in seen:
+                raise ValueError(
+                    "duplicate candidate claim: "
+                    f"{claim.category}/{claim.name}"
+                )
+
+            seen.add(key)
+
+        return self
+
+    @property
+    def skills(self) -> list[Claim]:
+        """Temporary compatibility alias."""
+
+        return self.claims

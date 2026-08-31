@@ -22,10 +22,20 @@ class ModelTests(unittest.TestCase):
             ).read_text(encoding="utf-8")
         )
 
-        self.assertEqual(job.title, "Cybersecurity Intern")
-        self.assertEqual(profile.skills[0].name, "python")
+        self.assertEqual(
+            job.title,
+            "Cybersecurity Intern",
+        )
+        self.assertEqual(
+            profile.claims[0].name,
+            "python",
+        )
+        self.assertEqual(
+            profile.claims[0].category,
+            "technical_skill",
+        )
 
-    def test_verified_skill_without_evidence_is_rejected(
+    def test_verified_claim_without_evidence_is_rejected(
         self,
     ) -> None:
         invalid_json = (
@@ -37,7 +47,7 @@ class ModelTests(unittest.TestCase):
 
         with self.assertRaisesRegex(
             ValidationError,
-            "verified skill 'python' requires evidence",
+            "verified claim 'python' requires evidence",
         ):
             Profile.model_validate_json(invalid_json)
 
