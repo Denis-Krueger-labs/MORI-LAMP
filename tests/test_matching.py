@@ -1,30 +1,30 @@
-import json
 from pathlib import Path
 import unittest
 
 from mori_lamp.matching import match_requirements
+from mori_lamp.models import Job, Profile
 
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def load_json(path: Path) -> dict:
-    return json.loads(path.read_text(encoding="utf-8"))
-
-
 class MatchingTests(unittest.TestCase):
     def setUp(self) -> None:
-        self.job = load_json(
-            ROOT / "examples" / "job.normalized.json"
+        self.job = Job.model_validate_json(
+            (
+                ROOT / "examples" / "job.normalized.json"
+            ).read_text(encoding="utf-8")
         )
-        self.valid_profile = load_json(
-            ROOT / "examples" / "profile.sample.json"
+        self.profile = Profile.model_validate_json(
+            (
+                ROOT / "examples" / "profile.sample.json"
+            ).read_text(encoding="utf-8")
         )
 
     def test_requirements_are_classified(self) -> None:
         result = match_requirements(
             self.job,
-            self.valid_profile,
+            self.profile,
         )
 
         self.assertEqual(
@@ -49,24 +49,46 @@ class MatchingTests(unittest.TestCase):
             ["active directory"],
         )
 
-    def test_verified_skill_without_evidence_is_rejected(
+    def test_self_reported_skill_is_not_promoted(
         self,
     ) -> None:
-        invalid_profile = load_json(
-            ROOT
-            / "tests"
-            / "fixtures"
-            / "profile.invalid.json"
+        job = Job.model_validate(
+            {
+                "source": "test",
+                "title": "Test Internship",
+                "company": "Test Company",
+                "requirements": [
+                    {
+                        "name": "python",
+                        "priority": "required",
+                    }
+                ],
+            }
+        )
+        profile = Profile.model_validate(
+            {
+                "skills": [
+                    {
+                        "name": "python",
+                        "status": "self_reported",
+                        "evidence": [
+                            "unverified personal claim"
+                        ],
+                    }
+                ]
+            }
         )
 
-        with self.assertRaisesRegex(
-            ValueError,
-            "verified skill 'python' requires evidence",
-        ):
-            match_requirements(
-                self.job,
-                invalid_profile,
-            )
+        result = match_requirements(job, profile)
+
+        self.assertEqual(
+            result["verified_matches"],
+            [],
+        )
+        self.assertEqual(
+            result["needs_evidence"][0]["name"],
+            "python",
+        )
 
 
 if __name__ == "__main__":
