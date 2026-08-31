@@ -1,0 +1,38 @@
+SOURCE_URL: https://prosec.jobs.personio.de/job/1553278?language=en
+TITLE: Junior Pentester / Red Teamer (m/w/d)
+COMPANY: ProSec GmbH
+LOCATION: Mendig, Hybrid
+EMPLOYMENT_TYPE: Vollzeit, Festanstellung
+
+ROLE
+
+Junior employees learn the complete project lifecycle, including scoping,
+execution, documentation, and presenting results.
+
+- Take ownership of limited test areas under senior guidance.
+- Participate in technical, social, and physical security engagements.
+- Develop focus areas such as web, mobile, cloud, Active Directory,
+  initial access, social engineering, or physical access.
+- Prepare findings and present them with the project lead.
+- Share technical knowledge through articles or videos.
+
+PROFILE
+
+- Support the company's mission and security approach.
+- Have several years of IT administration experience or equivalent
+  independently acquired knowledge of networks and infrastructure.
+- Have practical penetration-testing or red-team experience. Accepted
+  examples include CTFs, Hack The Box, a homelab, OSCP preparation,
+  or documented personal projects.
+- Demonstrate initiative, proactive thinking, and responsibility.
+- Communicate technical risks clearly to customers and collaborate well.
+- Speak German at minimum C1 and English at minimum B2.
+- Some classified engagements may require eligibility for a security review.
+- Offensive-security certifications such as OSCP, CRTP, CRTO I/II,
+  HTB CPTS, or comparable qualifications are desirable.
+
+APPLICATION RULES
+
+- AI may be used as a tool, but the application must contain genuine
+  personal input.
+- Apply only to positions that genuinely match the candidate.

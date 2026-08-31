@@ -44,7 +44,9 @@ class MatchingTests(unittest.TestCase):
         self.assertEqual(
             [
                 item["name"]
-                for item in result["unknown_requirements"]
+                for item in result[
+                    "unknown_requirements"
+                ]
             ],
             ["active directory"],
         )
@@ -54,7 +56,7 @@ class MatchingTests(unittest.TestCase):
     ) -> None:
         job = Job.model_validate(
             {
-                "source": "test",
+                "source": "manual",
                 "title": "Test Internship",
                 "company": "Test Company",
                 "requirements": [

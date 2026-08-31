@@ -1,0 +1,123 @@
+{
+  "source": "https://prosec.jobs.personio.de/job/1553278?language=en",
+  "title": "Junior Pentester / Red Teamer (m/w/d)",
+  "company": "ProSec GmbH",
+  "location": "Mendig, Hybrid",
+  "employment_type": "Vollzeit, Festanstellung",
+  "responsibilities": [
+    {
+      "name": "scoped penetration-test delivery",
+      "source_text": "Take ownership of limited test areas under senior guidance."
+    },
+    {
+      "name": "multi-vector security engagements",
+      "source_text": "Participate in technical, social, and physical security engagements."
+    },
+    {
+      "name": "offensive-security specialization",
+      "source_text": "Develop focus areas such as web, mobile, cloud, Active Directory, initial access, social engineering, or physical access."
+    },
+    {
+      "name": "findings presentation",
+      "source_text": "Prepare findings and present them with the project lead."
+    },
+    {
+      "name": "technical knowledge sharing",
+      "source_text": "Share technical knowledge through articles or videos."
+    }
+  ],
+  "requirements": [
+    {
+      "name": "alignment with company mission",
+      "category": "values",
+      "priority": "required",
+      "description": "Alignment with the employer's stated mission and security approach.",
+      "source_text": "Support the company's mission and security approach."
+    },
+    {
+      "name": "network and infrastructure knowledge",
+      "category": "experience",
+      "priority": "required",
+      "description": "Several years of IT administration experience or equivalent independently acquired knowledge.",
+      "source_text": "Have several years of IT administration experience or equivalent independently acquired knowledge of networks and infrastructure."
+    },
+    {
+      "name": "practical penetration-testing or red-team experience",
+      "category": "experience",
+      "priority": "required",
+      "description": "Prior practical offensive-security experience.",
+      "evidence_hints": [
+        "capture the flag competitions",
+        "hack the box",
+        "homelab",
+        "oscp preparation",
+        "documented personal projects"
+      ],
+      "source_text": "Have practical penetration-testing or red-team experience. Accepted examples include CTFs, Hack The Box, a homelab, OSCP preparation, or documented personal projects."
+    },
+    {
+      "name": "initiative and responsibility",
+      "category": "behavioral",
+      "priority": "required",
+      "description": "Proactive thinking, initiative, and responsibility.",
+      "source_text": "Demonstrate initiative, proactive thinking, and responsibility."
+    },
+    {
+      "name": "client communication and collaboration",
+      "category": "behavioral",
+      "priority": "required",
+      "description": "Clear communication of technical risks and effective collaboration.",
+      "source_text": "Communicate technical risks clearly to customers and collaborate well."
+    },
+    {
+      "name": "german",
+      "category": "language",
+      "priority": "required",
+      "description": "Professional German proficiency.",
+      "minimum_level": "C1",
+      "source_text": "Speak German at minimum C1 and English at minimum B2."
+    },
+    {
+      "name": "english",
+      "category": "language",
+      "priority": "required",
+      "description": "Professional English proficiency.",
+      "minimum_level": "B2",
+      "source_text": "Speak German at minimum C1 and English at minimum B2."
+    },
+    {
+      "name": "security-review eligibility",
+      "category": "eligibility",
+      "priority": "conditional",
+      "description": "Eligibility may be needed for certain classified assignments.",
+      "source_text": "Some classified engagements may require eligibility for a security review."
+    },
+    {
+      "name": "offensive-security certification",
+      "category": "credential",
+      "priority": "preferred",
+      "description": "A recognized offensive-security certification or comparable qualification.",
+      "evidence_hints": [
+        "oscp",
+        "crtp",
+        "crto i",
+        "crto ii",
+        "htb cpts",
+        "comparable qualification"
+      ],
+      "source_text": "Offensive-security certifications such as OSCP, CRTP, CRTO I/II, HTB CPTS, or comparable qualifications are desirable."
+    }
+  ],
+  "application_rules": [
+    {
+      "name": "genuine applicant input",
+      "description": "AI assistance is permitted, but the application must represent the applicant.",
+      "source_text": "AI may be used as a tool, but the application must contain genuine personal input."
+    },
+    {
+      "name": "targeted application",
+      "description": "The candidate should apply only where the position genuinely fits.",
+      "source_text": "Apply only to positions that genuinely match the candidate."
+    }
+  ]
+}
