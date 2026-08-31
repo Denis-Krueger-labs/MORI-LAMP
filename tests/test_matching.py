@@ -51,7 +51,7 @@ class MatchingTests(unittest.TestCase):
             ["active directory"],
         )
 
-    def test_self_reported_skill_is_not_promoted(
+    def test_self_reported_claim_is_not_promoted(
         self,
     ) -> None:
         job = Job.model_validate(
@@ -62,6 +62,7 @@ class MatchingTests(unittest.TestCase):
                 "requirements": [
                     {
                         "name": "python",
+                        "category": "technical_skill",
                         "priority": "required",
                     }
                 ],
@@ -69,9 +70,10 @@ class MatchingTests(unittest.TestCase):
         )
         profile = Profile.model_validate(
             {
-                "skills": [
+                "claims": [
                     {
                         "name": "python",
+                        "category": "technical_skill",
                         "status": "self_reported",
                         "evidence": [
                             "unverified personal claim"
@@ -90,6 +92,55 @@ class MatchingTests(unittest.TestCase):
         self.assertEqual(
             result["needs_evidence"][0]["name"],
             "python",
+        )
+
+    def test_same_name_in_wrong_category_does_not_match(
+        self,
+    ) -> None:
+        job = Job.model_validate(
+            {
+                "source": "manual",
+                "title": "Test Internship",
+                "company": "Test Company",
+                "requirements": [
+                    {
+                        "name": "german",
+                        "category": "language",
+                        "priority": "required",
+                        "minimum_level": "C1",
+                    }
+                ],
+            }
+        )
+        profile = Profile.model_validate(
+            {
+                "claims": [
+                    {
+                        "name": "german",
+                        "category": "technical_skill",
+                        "status": "verified",
+                        "evidence": [
+                            "unrelated technical project"
+                        ],
+                    }
+                ]
+            }
+        )
+
+        result = match_requirements(job, profile)
+
+        self.assertEqual(
+            result["verified_matches"],
+            [],
+        )
+        self.assertEqual(
+            [
+                item["name"]
+                for item in result[
+                    "unknown_requirements"
+                ]
+            ],
+            ["german"],
         )
 
 
